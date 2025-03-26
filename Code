@@ -1,0 +1,41 @@
+# Exporting file
+
+write.csv(marry, file = "marry.csv")
+
+# Importing File
+
+marry <- read.csv("marriage.csv", header = TRUE)
+
+# Cleaning Data
+
+unique(marry$marital)
+
+relation <- marry %>%
+  mutate(marital = recode(marital, Divorced = "Separated")) %>% 
+  filter(marital %in% c("Never married", "Separated","Married")) %>% 
+  filter(income < 20000)
+
+# Normality Test
+
+shapiro.test(relation$income)
+
+# Visualising 
+
+relation %>% 
+  ggplot(aes(income, marital, fill = marital)) +
+  geom_boxplot(alpha = 0.6, size = 0.8) + theme_classic() +
+  theme(legend.position = "bottom",
+        legend.title = element_blank()) +
+  labs(x = "Income",
+       y = "Marital Status")
+
+# Anova Test
+
+relation %>% 
+  aov(income ~ marital, dat = .) %>% 
+  summary()
+
+
+relation %>% 
+  aov(income ~ marital, dat = .) %>% 
+  TukeyHSD()

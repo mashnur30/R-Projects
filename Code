@@ -35,6 +35,7 @@ relation %>%
   aov(income ~ marital, dat = .) %>% 
   summary()
 
+# TuskeyHSD test
 
 relation %>% 
   aov(income ~ marital, dat = .) %>% 

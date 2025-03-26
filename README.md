@@ -1,2 +1,2 @@
-# R-Projects
-A repository showcasing my R programming projects, including data analysis, visualization, and statistical modeling.
+# Income Differences by Marital Status – ANOVA & Post-hoc Analysis in R
+This project analyzes income differences based on marital status using ANOVA and Post-hoc Tukey HSD tests in R. The dataset was statistically examined to determine significant differences in income among married, never married, and separated individuals. The repository includes the R script, dataset, and results interpretation.
